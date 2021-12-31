@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --live-reload false --open",
+    "vanity": "ng serve --host 0.0.0.0 --disable-host-check --live-reload false --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prod": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --build-optimizer --output-hashing=all && npm run post-build",
+    "post-build": "node src/post-build.js"
   },
   "private": true,
   "dependencies": {
